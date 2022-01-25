@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      font: 400 15px/1.8 "Raleway", sans-serif;
+      color: #777;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #ffffff;
+    }
+
+    ul {
+      padding: 0px;
+    }
+
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3,
+    .bgimg-4 {
+      position: relative;
+      opacity: 0.75;
+      background-attachment: scroll;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    .bgimg-2,
+    .bgimg-3,
+    .socialGallery,
+    .workGallery {
+      min-width: 100%;
+    }
+
+    .socialGallery,
+    .workGallery {
+      height: 100%;
+    }
+
+    .slider-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bgimg-1 {
+      background-image: url("snow.jpg");
+    }
+
+    .bgimg-4 {
+      background-image: url("christmas.jpg");
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    .caption .border {
+      background-color: rgb(44, 41, 41);
+      color: #fff;
+      padding: 16px;
+      font-size: 24px;
+      letter-spacing: 10px;
+    }
+
+    h3 {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .lightSection {
+      color: #777;
+      background-color: #ffffff;
+      text-align: justify;
+      padding: 24px 32px;
+    }
+
+    .darkSection {
+      color: #ddd;
+      background-color: #282E34;
+      text-align: justify;
+      padding: 24px 32px;
+    }
+
+    .language {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      z-index: 1000;
+      margin: 10px;
+      font-weight: bold;
+    }
+
+    .language img {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+    .language :first-child {
+      margin-right: 8px;
+    }
+
+    .en {
+      display: none;
+    }
+
+    .contact {
+      background-color: #80d3b5;
+      z-index: 1000;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    .slick-list,
+    .slick-track {
+      height: 100%;
+    }
+
+    .contact img {
+      display: block;
+    }
+
+    .wave {
+      animation-name: wave-animation;
+      animation-duration: 1.8s;
+      animation-iteration-count: infinite;
+      transform-origin: 70% 70%;
+      display: inline-block;
+    }
+
+    @keyframes wave-animation {
+      0% {
+        transform: rotate(0.0deg)
+      }
+
+      10% {
+        transform: rotate(14.0deg)
+      }
+
+      20% {
+        transform: rotate(-8.0deg)
+      }
+
+      30% {
+        transform: rotate(14.0deg)
+      }
+
+      40% {
+        transform: rotate(-4.0deg)
+      }
+
+      50% {
+        transform: rotate(12.0deg)
+      }
+
+      60% {
+        transform: rotate(0.0deg)
+      }
+
+      100% {
+        transform: rotate(0.0deg)
+      }
+    }
+
+
+
+    @media only screen and (min-device-width: 1024px) {
+
+      .bgimg-1,
+      .bgimg-4 {
+        background-attachment: fixed;
+      }
+
+      .bgimg-1 {
+        background-image: url("barcelona.jpg");
+      }
+
+      .lightSection,
+      .darkSection {
+        padding: 48px 72px;
+      }
+    }
+
+    @media only screen and (min-device-width: 768px) {
+
+      .bgimg-1 {
+        background-image: url("barcelona.jpg");
+      }
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+    integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var langEnglish = $('#lang-en');
+      var langGerman = $('#lang-de');
+
+      langGerman.on('mouseover', function (event) {
+        langGerman.css('opacity', '1');
+      });
+
+      langGerman.on('mouseout', function (event) {
+        langGerman.css('opacity', '0.5');
+      });
+
+      langEnglish.on('mouseover', function (event) {
+        langEnglish.css('opacity', '1');
+      });
+
+      langEnglish.on('mouseout', function (event) {
+        langEnglish.css('opacity', '0.5');
+      });
+
+      langGerman.on('click', function (event) {
+        $('.en').hide();
+        $('.de').show();
+      });
+
+      langEnglish.on('click', function (event) {
+        $('.de').hide();
+        $('.en').show();
+      });
+
+      $('.contact').on('click', function (event) {
+        window.open("mailto:denisanazarko8@gmail.com", "_blank");
+      });
+
+      $('.socialGallery').slick({
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+        draggable: true,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        fade: false,
+        cssEase: 'linear',
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          }
+        ]
+      });
+
+      $('.workGallery').slick({
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+        draggable: true,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        speed: 300,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        fade: false,
+        cssEase: 'linear',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          }
+        ]
+      });
+    });
+  </script>
+
+  <title>Denisa & Fabian - A home in Berlin</title>
+</head>
+
+<body>
+
+  <div class="language">
+    <img src="de.png" alt="deutsch" id="lang-de" />
+    <img src="en.png" alt="english" id="lang-en" />
+  </div>
+
+  <div class="bgimg-1">
+    <div class="caption">
+      <span class="border en">Hello there! <span class="wave">&#128075;</span></span>
+      <span class="border de">Hallo! <span class="wave">&#128075;</span></span>
+    </div>
+  </div>
+
+  <div class="darkSection">
+    <div class="en">
+      <h3>We are Denisa & Fabian and we're looking for a new home in Berlin!</h3>
+      <p>Denisa is a doctor, currently working in Baden-Württemberg.
+        She will soon start a new job at the <a href="https://www.drk-kliniken-berlin.de/koepenick" target="_blank">
+          DRK Kliniken Köpenick.
+        </a></p>
+      <p>Fabian is a Senior Software Engineer. He currently works for a consulting firm and gets to enjoy
+        working on different contracting positions for companies in Berlin. Currently he is part of the mobile
+        development team at <a href="https://www.immobilienscout24.de/" target="_blank">ImmoScout24!</a></p>
+      <p>Originally, we come from the colorful and sunny city of Tirana, Albania.</p>
+      <p>We are both EU Blue card holders and Denisa will be eligible for a permanent residency in March
+        2022.</p>
+      <p>We have known each other since high-school and we currently live together in Reutlingen, Germany.
+        We have both visited Berlin many times before and it is our favorite place in the world.</p>
+      <p>We will be moving to Berlin on April 1st and are looking for a place long-term we can call home.</p>
+    </div>
+    <div class="de">
+      <h3>We are Denisa & Fabian and we're looking for a new home in Berlin!</h3>
+      <p>Denisa is a doctor, currently working in Baden-Württemberg.
+        She will soon start a new job at the <a href="https://www.drk-kliniken-berlin.de/koepenick" target="_blank">
+          DRK Kliniken Köpenick.
+        </a></p>
+      <p>Fabian is a Senior Software Engineer. He currently works for a consulting firm and gets to enjoy
+        working on different contracting positions for companies in Berlin. Currently he is part of the mobile
+        development team at <a href="https://www.immobilienscout24.de/" target="_blank">ImmoScout24!</a></p>
+      <p>Originally, we come from the colorful and sunny city of Tirana, Albania.</p>
+      <p>We are both EU Blue card holders and Denisa will be eligible for a permanent residency in March
+        2022.</p>
+      <p>We have known each other since high-school and we currently live together in Reutlingen, Germany.
+        We have both visited Berlin many times before and it is our favorite place in the world.</p>
+      <p>We will be moving to Berlin on April 1st and are looking for a place long-term we can call home.</p>
+    </div>
+  </div>
+
+  <div class="bgimg-2">
+    <div class="socialGallery">
+      <img class="slider-img" src="cooking.jpg" alt="cooking"></img>
+      <img class="slider-img" src="fabianukulele.jpg" alt="ukulele"></img>
+      <img class="slider-img" src="cafe.jpg" alt="cafe"></img>
+    </div>
+  </div>
+
+  <div class="lightSection">
+    <div class="en">
+      <p>We are a young couple who enjoy all the things we do together. We love cooking and travelling the world
+        together.
+        We also enjoy just sitting in the couch after a long day at work and enjoying a movie while having some
+        popcorn.
+      </p>
+      <p>Denisa's favourite activity is sleeping by the seaside. Her superpower is completely ignoring
+        the blazing sun of Spain in the middle of August while having a peaceful nap.</p>
+      <p>Fabian has always tried to be a musician since he was a teenager. He loves playing the ukulele, even though the
+        tunes
+        coming out of it are not always worth listenening to.</p>
+    </div>
+    <div class="de">
+      <p>We are a young couple who enjoy all the things we do together. We love cooking and travelling the world
+        together.
+        We also enjoy just sitting in the couch after a long day at work and enjoying a movie while having some
+        popcorn.
+      </p>
+      <p>Denisa's favourite activity is sleeping by the seaside. Her superpower is completely ignoring
+        the blazing sun of Spain in the middle of August while having a peaceful nap.</p>
+      <p>Fabian has always tried to be a musician since he was a teenager. He loves playing the ukulele, even though the
+        tunes
+        coming out of it are not always worth listenening to.</p>
+    </div>
+  </div>
+
+
+  <div class="bgimg-3">
+    <div class="workGallery">
+      <img class="slider-img" src="denisauniform.jpg" alt="denisa in uniform"></img>
+      <img class="slider-img" src="fabianworking.jpg" alt="fabian working"></img>
+    </div>
+
+    <div class="caption">
+      <span class="border en">We contribute to Germany's social welfare system and digitalization</span>
+      <span class="border de">We contribute to Germany's social welfare system and digitalization</span>
+    </div>
+  </div>
+
+  <div class="lightSection">
+    <div class="en">
+      <p>Denisa is an essential worker. She moved to work as a doctor in Germany just before the pandemic started and
+        has been
+        in the front lines ever since. She has dealt with numerous COVID outbreaks at her hospital.
+      </p>
+      <p>
+        Fabian has worked for three different German companies in his career. Through his work he has worked on
+        various
+        products which have contributed in the digitalization and simplification of beauracracy, helping studens find
+        short term
+        jobs and helping people in their apartment search. He actively contributes to the creation of a sustainable
+        and
+        secure
+        digital infrastructure in Germany.
+      </p>
+    </div>
+    <div class="de">
+      <p>
+        Denisa is an essential worker. She moved to work as a doctor in Germany just before the pandemic started and
+        has been
+        in the front lines ever since. She has dealt with numerous COVID outbreaks at her hospital.
+      </p>
+      <p>
+        Fabian has worked for three different German companies in his career. Through his work he has worked on
+        various
+        products which have contributed in the digitalization and simplification of beauracracy, helping studens find
+        short term
+        jobs and helping people in their apartment search. He actively contributes to the creation of a sustainable
+        and
+        secure
+        digital infrastructure in Germany.
+      </p>
+    </div>
+  </div>
+
+  <div class="darkSection">
+    <div class="en">
+      <h3>Summary of key information</h3>
+      <ul>
+        <li>
+          We will be both arriving in Berlin on April 1st to live. We would also be flexible in moving in a few weeks
+          earlier.
+        </li>
+        <li>
+          We are open-minded about where we live, but we'd ideally like at least two bedrooms, a spacious kitchen, and
+          a balcony or a terrace.
+          We would like to be reasonably central (preferably in Schöneberg/Tempelhof) and a commutable distance
+          from Kreuzberg.
+        </li>
+        <li>
+          We don't have any pets.
+        </li>
+        <li>
+          Our budget is roughly €1200-€1600 per month.
+        </li>
+      </ul>
+    </div>
+    <div class="de">
+      <h3>Summary of key information</h3>
+      <ul>
+        <li>
+          We will be both arriving in Berlin on April 1st to live. We would also be flexible in moving in a few weeks
+          earlier.
+        </li>
+        <li>
+          We are open-minded about where we live, but we'd ideally like at least two bedrooms, a spacious kitchen, and
+          a balcony or a terrace.
+          We would like to be reasonably central (preferably in Schöneberg/Tempelhof) and a commutable distance
+          from Kreuzberg.
+        </li>
+        <li>
+          We don't have any pets.
+        </li>
+        <li>
+          Our budget is roughly €1200-€1600 per month.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bgimg-4">
+    <div class="caption">
+      <span class="border en">WANT US TO BE YOUR NEXT TENANTS?</span>
+      <span class="border de">WANT US TO BE YOUR NEXT TENANTS?</span><br>
+      <span class="border en"><a href="mailto:denisanazarko8@gmail.com" target="_blank">GET
+          IN TOUCH!</a></span>
+      <span class="border de"><a href="mailto:denisanazarko8@gmail.com" target="_blank">GET
+          IN TOUCH!</a></span>
+    </div>
+  </div>
+
+  <div class="contact">
+    <img src="ic_mail.svg" alt="email"></img>
+  </div>
+
+</body>
+
+</html>
